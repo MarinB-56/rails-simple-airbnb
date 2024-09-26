@@ -1,4 +1,7 @@
-<h1>All our flats (<%= @flats.length %>)</h1>
+</div>
+  <h1>All our flats (<%= @flats.length %>)</h1>
+  <%= link_to "Add Flat", new_flat_path %>
+<div>
 
 <ul>
   <% @flats.each do |flat| %>
@@ -15,6 +18,9 @@
     <div>
       <%= link_to "More info", flat_path(flat) %>
       <%= link_to "Edit", edit_flat_path(flat) %>
+      <%= link_to "Delete",
+      flat_path(flat),
+      data: {turbo_method: 'delete', turbo_confirm: "Delete #{flat.name} flat?" } %>
     </div>
   <% end %>
 </ul>
