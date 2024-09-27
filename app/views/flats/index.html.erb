@@ -1,26 +1,30 @@
 <div class="container">
   <h1>All our flats (<%= @flats.length %>)</h1>
 
-  <div class="">
+  <div class="row">
     <% @flats.each do |flat| %>
-      <div class="card">
-        <h3><%= flat.name %></h3>
-        <p><%= flat.description %></p>
-        <div>
-          <p>
-            <i class="fa-solid fa-users"></i> <%= flat.number_of_guests %>
-            <i class="fa-solid fa-euro-sign"></i> <%= flat.price_per_night %>
-          </p>
-        </div>
-        <div>
-          <%= link_to "More info", flat_path(flat), class: 'btn btn-primary' %>
-          <%= link_to "Edit", edit_flat_path(flat), class: 'btn btn-warning' %>
-          <%= link_to "Delete",
-          flat_path(flat),
-          class: 'btn btn-danger',
-          data: {turbo_method: 'delete', turbo_confirm: "Delete #{flat.name} flat?" } %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-content">
+            <h3><%= flat.name %></h3>
+            <p><%= flat.description %></p>
+            <div>
+              <p>
+                <i class="fa-solid fa-users"></i> <%= flat.number_of_guests %>
+                <i class="fa-solid fa-euro-sign"></i> <%= flat.price_per_night %>
+              </p>
+            </div>
+          </div>
+          <div class="">
+            <%= link_to "More info", flat_path(flat), class: 'btn btn-primary' %>
+            <%= link_to "Edit", edit_flat_path(flat), class: 'btn btn-warning' %>
+            <%= link_to "Delete",
+            flat_path(flat),
+            class: 'btn btn-danger',
+            data: { turbo_method: 'delete', turbo_confirm: "Delete #{flat.name} flat?" } %>
+          </div>
         </div>
       </div>
-    <% end %>s
+    <% end %>
   </div>
 </div>
